@@ -108,7 +108,7 @@ $(function() {
 
     // Removes the visual chat typing message
     const removeChatTyping = (data) => {
-        getTypingMessages(data).fadeOut(() => {
+        getTypingMessages(data).prevObject.fadeOut(() => {
             $(this).remove();
         });
     }
@@ -229,7 +229,7 @@ $(function() {
     socket.on('login', (data) => {
         connected = true;
         // Display the welcome message
-        var message = "Welcome to Socket.IO Chat – ";
+        var message = "Online spjall hjá Tölvubraut FB – ";
         log(message, {
             prepend: true
         });

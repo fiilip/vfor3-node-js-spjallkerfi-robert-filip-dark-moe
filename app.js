@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const chatroom = require('./workers/chatroom');
+
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -42,5 +42,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//const chatroom = require('./workers/chatroom');
+
 
 module.exports = app;
