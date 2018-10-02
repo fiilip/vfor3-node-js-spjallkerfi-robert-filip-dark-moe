@@ -6,6 +6,9 @@ $(function() {
         '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
         '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
     ];
+    const blacklist = [
+        "test","test 2","123"
+    ];
 
     // Initialize variables
     const $window = $(window);
@@ -83,7 +86,14 @@ $(function() {
             options.fade = false;
             $typingMessages.remove();
         }
+        // BLACKLIST
+        for (i = 0; i < blacklist.length; i++) {
+            if (blacklist[i] == data.message) {
+                data.message = "<message deleted>"
+            }
+        }
 
+        console.log(data.message);
         const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
             .css('color', getUsernameColor(data.username));
