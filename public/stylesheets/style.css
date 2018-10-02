@@ -9,6 +9,10 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
+body {
+    background: url("../images/PaperBackground.png");
+}
+
 html, input {
     font-family:
             "HelveticaNeue-Light",
