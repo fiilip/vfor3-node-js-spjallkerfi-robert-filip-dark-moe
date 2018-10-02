@@ -13,8 +13,8 @@ $(function() {
     const $messages = $('.messages'); // Messages area
     const $inputMessage = $('.inputMessage'); // Input message input box
 
-    var $loginPage = $('.login.page'); // The login page
-    var $chatPage = $('.chat.page'); // The chatroom page
+    const $loginPage = $('.login.page'); // The login page
+    const $chatPage = $('.chat.page'); // The chatroom page
 
     // Prompt for setting a username
     let username;
@@ -70,7 +70,7 @@ $(function() {
 
     // Log a message
     const log = (message, options) => {
-        var $el = $('<li>').addClass('log').text(message);
+        const $el = $('<li>').addClass('log').text(message);
         addMessageElement($el, options);
     };
 
@@ -178,12 +178,12 @@ $(function() {
     // Gets the color of a username through our hash function
     const getUsernameColor = (username) => {
         // Compute hash code
-        var hash = 7;
-        for (var i = 0; i < username.length; i++) {
+        let hash = 7;
+        for (let i = 0; i < username.length; i++) {
             hash = username.charCodeAt(i) + (hash << 5) - hash;
         }
         // Calculate color
-        var index = Math.abs(hash % COLORS.length);
+        const index = Math.abs(hash % COLORS.length);
         return COLORS[index];
     };
 
@@ -228,7 +228,7 @@ $(function() {
     socket.on('login', (data) => {
         connected = true;
         // Display the welcome message
-        var message = "Online spjall hjá Tölvubraut FB – ";
+        const message = "Online spjall hjá Tölvubraut FB – ";
         log(message, {
             prepend: true
         });
