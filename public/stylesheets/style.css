@@ -14,6 +14,7 @@ body {
 }
 
 body.dark-mode{
+<<<<<<< HEAD
     /*background-color:#414141;*/
     background-color:#0e0e0e;
 }
@@ -34,6 +35,28 @@ body.light-mode{
     cursor:pointer;
     font-size:20px;
     padding-top:10px;
+=======
+	/*background-color:#414141;*/
+	background-color:#0e0e0e;
+}
+
+body.light-mode{
+	background-color:whitesmoke;
+}
+
+#dark-mode{
+	color:white;
+}
+
+#light-mode{
+	color:black;
+}
+
+.dark-light-button{
+	cursor:pointer;
+	font-size:20px;
+	padding-top:10px;
+>>>>>>> github/master
 }
 
 
@@ -52,7 +75,11 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     overflow:hidden;
+=======
+	overflow:hidden;
+>>>>>>> github/master
 }
 
 ul {
@@ -166,6 +193,7 @@ ul {
 /* Input */
 
 .inputMessage{
+<<<<<<< HEAD
     bottom: 0;
     height: 60px;
     left: 0;
@@ -199,6 +227,41 @@ ul {
 
 #input-light-mode:focus{
     border-color:black;
+=======
+	bottom: 0;
+	height: 60px;
+	left: 0;
+	outline: none;
+	padding-left: 10px;
+	position: absolute;
+	right: 0;
+	width: 100%;
+}
+
+#input-dark-mode::placeholder{
+	color:#FFF;
+}
+#input-dark-mode {
+	border: 1px solid #171717;
+	/*background:rgba(155, 155, 155, 0.51);*/
+	background:#0e0e0e;
+	font-size:20px;
+	color:#FFF;
+}
+#input-dark-mode:focus{
+	border-color:#777777;
+}
+
+#input-light-mode{
+	border: 1px solid darkgray;
+	background:whitesmoke;
+	font-size:20px;
+	color:#000;
+}
+
+#input-light-mode:focus{
+	border-color:black;
+>>>>>>> github/master
 }
 
 
