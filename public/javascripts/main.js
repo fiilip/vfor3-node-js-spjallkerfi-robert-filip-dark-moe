@@ -104,11 +104,9 @@ $(function() {
 
             var $messageBodyDiv = $('<span id="light-mode" class="x">')
                 .text(data.message);
-<<<<<<< HEAD
         }
-=======
-            }
->>>>>>> github/master
+
+
 
         const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
