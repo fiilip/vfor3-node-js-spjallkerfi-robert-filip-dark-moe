@@ -6,9 +6,6 @@ $(function() {
         '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
         '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
     ];
-    const blacklist = [
-        "test","test 2","123"
-    ];
 
     // Initialize variables
     const $window = $(window);
@@ -73,7 +70,7 @@ $(function() {
 
     // Log a message
     const log = (message, options) => {
-        const $el = $('<li>').addClass('log').text(message);
+        let $el = $('<li>').addClass('log').text(message);
         addMessageElement($el, options);
     };
 
@@ -86,19 +83,33 @@ $(function() {
             options.fade = false;
             $typingMessages.remove();
         }
+
         // BLACKLIST
         for (i = 0; i < blacklist.length; i++) {
-            if (blacklist[i] == data.message) {
-                data.message = "<message deleted>"
+            if (data.message.toUpperCase().indexOf(blacklist[i].toUpperCase()) >= 0){
+                data.message = "<message deleted>";
             }
         }
 
-        console.log(data.message);
+        let body = document.getElementById("body");
+        let currentClass = body.className;
+
+        if(currentClass === "dark-mode") {
+
+            var $messageBodyDiv = $('<span id="dark-mode" class="x">')
+                .text(data.message);
+        }
+
+        if(currentClass === "light-mode") {
+
+            var $messageBodyDiv = $('<span id="light-mode" class="x">')
+                .text(data.message);
+        }
+
         const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
             .css('color', getUsernameColor(data.username));
-        const $messageBodyDiv = $('<span class="messageBody">')
-            .text(data.message);
+
 
         const typingClass = data.typing ? 'typing' : '';
         const $messageDiv = $('<li class="message"/>')

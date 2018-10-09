@@ -1,64 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-  <title>Socket.IO Chat Example</title>
-  <link rel="stylesheet" href="stylesheets/style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <title>Socket.IO Chat Example</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
-<body>
+<body id="body" class="dark-mode">
 
 
 
 <ul class="pages">
-  <li class="chat page">
-  <!-- Navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+    <li class="chat page">
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
 
 
-        <!-- Header -->
+                <!-- Header -->
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Socket.IO Chat Example</a>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Socket.IO Chat Example</a>
+                </div>
+
+                <!-- Items -->
+                <div class="collapse navbar-collapse" id="topNavBar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><span aria-hidden="true"></span></li>
+                        <li class=""><span aria-hidden="true"></span></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dark-light-button" type="button" onclick="toggleDarkLight()" title="Toggle dark/light mode">🌛</li>
+                        <li class=""><a href="/"><span aria-hidden="true"></span>&nbsp; Logout</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <script>
+            function toggleDarkLight() {
+                var body = document.getElementById("body");
+                var currentClass = body.className;
+                body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+                if (currentClass == "dark-mode"){
+                    var x = document.getElementsByClassName("x");
+                    var inputMessage = document.getElementsByClassName("inputMessage");
+                    inputMessage[0].id = "input-light-mode";
+                    for(i=0; i<x.length; i++){
+                        x[i].id = "light-mode";
+                    }
+                }
+                if(currentClass == "light-mode"){
+                    var x = document.getElementsByClassName("x");
+                    var inputMessage2 = document.getElementsByClassName("inputMessage");
+                    inputMessage2[0].id = "input-dark-mode";
+                    for(i=0; i<x.length; i++){
+                        x[i].id = "dark-mode";
+                    }
+                }
+            }
+        </script>
+        <div class="chatArea">
+            <ul class="messages"></ul>
         </div>
-
-        <!-- Items -->
-        <div class="collapse navbar-collapse" id="topNavBar">
-          <ul class="nav navbar-nav">
-            <li class="active"><span aria-hidden="true"></span>&nbsp; Home</li>
-            <li class=""><span aria-hidden="true"></span>&nbsp; Here Is Nothing</li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href="/"><span aria-hidden="true"></span>&nbsp; Logout</a></li>
-          </ul>
+        <input id="input-dark-mode" class="inputMessage" placeholder="Type here..." maxlength="500"/>
+    </li>
+    <li class="login page">
+        <div class="form">
+            <h3 class="title">What's your nickname?</h3>
+            <input class="usernameInput" type="text" maxlength="14" />
         </div>
-
-      </div>
-    </nav>
-
-    <div class="chatArea">
-      <ul class="messages"></ul>
-    </div>
-
-    <input class="inputMessage" placeholder="Type here..."/>
-  </li>
-  <li class="login page">
-    <div class="form">
-      <h3 class="title">What's your nickname?</h3>
-      <input class="usernameInput" type="text" maxlength="14" />
-    </div>
-  </li>
+    </li>
 </ul>
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
 <script src="javascripts/main.js"></script>
+<script src="javascripts/blacklist.js"></script>
 </body>
 </html>
